@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "ديوان السعادة – نغم يجمعنا",
+  "short_name": "ديوان السعادة",
+  "description": "المكتبة الرقمية الرسمية لقناة ديوان السعادة: استمع وشاهد جلسات طرب يمنية وخليجية حية، أغاني التراث، وراديو مباشر 24 ساعة.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFDF7",
+  "theme_color": "#0D65D9",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

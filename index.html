@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <script>
+      // Gracefully suppress benign Vite HMR WebSocket notifications in sandboxed environments
+      (function() {
+        var isViteWs = function(str) {
+          if (!str) return false;
+          return (
+            str.indexOf('WebSocket closed without opened') !== -1 ||
+            str.indexOf('WebSocket') !== -1 && (str.indexOf('closed') !== -1 || str.indexOf('failed') !== -1) ||
+            str.indexOf('[vite] connecting...') !== -1
+          );
+        };
+
+        // Filter console.error from triggering external test frame overlays
+        var origConsoleError = console.error;
+        console.error = function() {
+          var args = Array.prototype.slice.call(arguments);
+          var joined = args.map(function(a) {
+            return (a && (a.message || a.stack || String(a))) || '';
+          }).join(' ');
+          if (isViteWs(joined)) {
+            return;
+          }
+          return origConsoleError.apply(console, arguments);
+        };
+
+        var suppress = function(e) {
+          var str = String((e && (e.message || (e.error && e.error.message) || e.reason)) || '');
+          if (isViteWs(str) || str.indexOf('vite') !== -1 || str.indexOf('ws:') !== -1) {
+            if (e.preventDefault) e.preventDefault();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            return true;
+          }
+        };
+        window.addEventListener('error', suppress, true);
+        window.addEventListener('unhandledrejection', suppress, true);
+        var origOnError = window.onerror;
+        window.onerror = function(msg, url, line, col, err) {
+          if (suppress({ message: msg, error: err })) return true;
+          return origOnError ? origOnError.apply(this, arguments) : false;
+        };
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ديوان السعادة – نغم يجمعنا | منصة الطرب والتراث اليمني</title>
+    <meta
+      name="description"
+      content="المكتبة الرقمية الرسمية لقناة ديوان السعادة: استمع وشاهد جلسات طرب يمنية وخليجية حية، أغاني التراث الصنعاني واللحجي والحضرمي، وراديو مباشر 24 ساعة."
+    />
+    <meta
+      name="keywords"
+      content="ديوان السعادة, نغم يجمعنا, طرب يمني, راديو ديوان السعادة, جلسات عود, دان حضرمي, شرح لحجي, أغاني صنعانية, أغاني عدنية, تراث يمني, أسامة المقدم, محمد الجنيد, كمال النعمان"
+    />
+    <meta name="author" content="ديوان السعادة – نغم يجمعنا" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#0D65D9" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/" />
+
+    <!-- Performance Preconnects for YouTube Media & Google Fonts -->
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin />
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+    <!-- OpenGraph Tags (WhatsApp, Facebook, Telegram, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/" />
+    <meta property="og:title" content="ديوان السعادة – نغم يجمعنا | منصة الطرب والتراث اليمني" />
+    <meta
+      property="og:description"
+      content="المكتبة الرقمية الرسمية لقناة ديوان السعادة: جلسات طرب يمنية وخليجية حية، راديو متواصل 24 ساعة، وأرشيف التراث الفني الأصيل."
+    />
+    <meta property="og:image" content="/og-share-banner.jpg" />
+    <meta property="og:image:secure_url" content="/og-share-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="شعار وقناة ديوان السعادة – نغم يجمعنا" />
+    <meta property="og:site_name" content="ديوان السعادة – نغم يجمعنا" />
+    <meta property="og:locale" content="ar_YE" />
+
+    <!-- Twitter / X Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ديوان السعادة – نغم يجمعنا | منصة الطرب والتراث اليمني" />
+    <meta
+      name="twitter:description"
+      content="جلسات طرب، شرح لحجي، دان حضرمي، راديو ديوان السعادة المباشر 24 ساعة، وأرشيف الأغاني اليمنية الأصيلة."
+    />
+    <meta name="twitter:image" content="/og-share-banner.jpg" />
+
+    <!-- App Favicon & Mobile Icons -->
+    <link rel="icon" type="image/jpeg" href="/channel-logo.jpg" />
+    <link rel="shortcut icon" href="/channel-logo.jpg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org Rich Structured Data for Google Ranking & Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/#website",
+          "url": "https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/",
+          "name": "ديوان السعادة – نغم يجمعنا",
+          "description": "منصة الطرب والتراث اليمني والخليجي: جلسات حية، راديو مباشر 24 ساعة، وأرشيف الأغاني الأصيلة.",
+          "inLanguage": "ar",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/#organization",
+          "name": "ديوان السعادة – نغم يجمعنا",
+          "alternateName": "Dewan Al Saada",
+          "url": "https://www.youtube.com/@dewanalsaada",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ais-pre-bz2cc5fqifdb5dnsndy7vd-8035750185.europe-west2.run.app/channel-logo.jpg",
+            "width": 512,
+            "height": 512
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+967-733-600-800",
+            "contactType": "customer service",
+            "areaServed": ["YE", "SA", "AE", "KW", "OM", "QA", "BH", "US", "GB", "EG"],
+            "availableLanguage": ["Arabic"]
+          },
+          "sameAs": [
+            "https://www.youtube.com/@dewanalsaada",
+            "https://www.facebook.com/dewanalsaada"
+          ]
+        },
+        {
+          "@type": "MusicGroup",
+          "@id": "https://www.youtube.com/@dewanalsaada#musicgroup",
+          "name": "ديوان السعادة – نغم يجمعنا",
+          "alternateName": "Dewan Al Saada",
+          "description": "إحياء الأغنية اليمنية بطابع شبابي جديد وجلسات طربية حية من التراث الصنعاني واللحجي والحضرمي والخليجي.",
+          "url": "https://www.youtube.com/@dewanalsaada",
+          "image": "/og-share-banner.jpg",
+          "genre": ["Yemeni Traditional", "Arabic Tarab", "Oud Sessions", "Khaleeji", "Sanaani", "Lahji", "Hadrami"],
+          "sameAs": [
+            "https://www.youtube.com/@dewanalsaada",
+            "https://www.facebook.com/dewanalsaada"
+          ]
+        },
+        {
+          "@type": "MusicPlaylist",
+          "name": "روائع جلسات ديوان السعادة – نغم يجمعنا",
+          "numTracks": 25,
+          "track": [
+            {
+              "@type": "MusicRecording",
+              "name": "أناني | من روائع الشاعر حسين المحضار",
+              "byArtist": {
+                "@type": "MusicGroup",
+                "name": "محمد الناخبي"
+              },
+              "inAlbum": "جلسات ديوان السعادة – نغم يجمعنا"
+            },
+            {
+              "@type": "MusicRecording",
+              "name": "بث مباشر من قِبل ديوان السعادة",
+              "byArtist": {
+                "@type": "MusicGroup",
+                "name": "كوكبة فناني ديوان السعادة"
+              },
+              "inAlbum": "بث مباشر ديوان السعادة"
+            },
+            {
+              "@type": "MusicRecording",
+              "name": "يا طبيب الهوى",
+              "byArtist": {
+                "@type": "MusicGroup",
+                "name": "أسامة المقدم"
+              },
+              "inAlbum": "جلسات العود والتقاسيم"
+            },
+            {
+              "@type": "MusicRecording",
+              "name": "يا من لقلب متيم",
+              "byArtist": {
+                "@type": "MusicGroup",
+                "name": "محمد الجنيد"
+              },
+              "inAlbum": "الأغاني الصنعانية الأصيلة"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "ما هي قناة ومنصة ديوان السعادة؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ديوان السعادة هي المنصة والمكتبة الرقمية الرسمية لإحياء التراث الغنائي اليمني والخليجي، وتقدم جلسات طربية حية، وأرشيفاً متجدداً للأغاني الصنعانية واللحجية والحضرمية والعدنية بأعلى نقاوة صوتية."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "كيف يمكن الاستماع لراديو ديوان السعادة 24 ساعة؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "يوفر ديوان السعادة مشغل راديو متواصل يعمل 24 ساعة متصل وغير متصل (Offline Mode)، مع ميزة التشغيل التلقائي المتتابع بدون انقطاع وخاصية البث عبر البلوتوث لمسجل السيارة والسماعات اللاسلكية."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "كيف يمكن تنزيل جلسات الفيديو MP4 والصوت MP3؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "يمكن تنزيل أي جلسة أو أغنية بنقرة واحدة من صفحة الفيديوهات بصيغة MP4 عالية الجودة تدعم شاشات السيارات والهواتف، أو تحويلها فوراً إلى صوت MP3 نقي بنقاء استوديو 320kbps."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "كيف يمكن للمواهب الفنية الشابة المشاركة في جلسات ديوان السعادة؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ترحب إدارة ديوان السعادة بالمواهب الشابة في الغناء والعزف والشعر، ويمكن التقديم عبر زر 'رعاية المواهب' في الصفحة الرئيسية أو بالتواصل المباشر مع المشرف العام الأستاذ محمد قائد عبر واتساب +967733600800."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "WebApplication",
+          "name": "ديوان السعادة – منصة الطرب والراديو الرسمي",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All (Web, Android, Windows, iOS, PWA)",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "استمع وحمل جلسات طرب ديوان السعادة بدقة استوديو عالية وراديو مباشر على مدار 24 ساعة وتطبيق ويب تقدمي PWA."
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
